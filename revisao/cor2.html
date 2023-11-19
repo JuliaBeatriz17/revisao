@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alterar Cor de Fundo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background-color 0.5s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      margin: 10px;
+      padding: 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+
+    #container {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <a href="#" onmouseover="mudarCor('red')">Vermelho</a>
+    <a href="#" onmouseover="mudarCor('green')">Verde</a>
+    <a href="#" onmouseover="mudarCor('blue')">Azul</a>
+    <a href="#" onmouseover="mudarCor('yellow')">Amarelo</a>
+  </div>
+
+  <script>
+    function mudarCor(cor) {
+      document.body.style.backgroundColor = cor;
+    }
+  </script>
+
+</body>
+</html>

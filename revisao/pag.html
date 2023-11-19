@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocultar/Mostrar Parágrafo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #container {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <p id="paragrafo">Este é um parágrafo. Clique no botão abaixo para ocultar ou mostrar.</p>
+    <button onclick="alternarVisibilidade()">Ocultar/Mostrar</button>
+  </div>
+
+  <script>
+    function alternarVisibilidade() {
+      var paragrafo = document.getElementById('paragrafo');
+
+      if (paragrafo.style.display === 'none' || paragrafo.style.display === '') {
+        paragrafo.style.display = 'block';
+      } else {
+        paragrafo.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
+

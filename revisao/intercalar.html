@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intercalar Palavras</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      font-size: 14px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    #saida {
+      font-size: 16px;
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 200px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <label for="palavra1">Palavra 1:</label>
+    <input type="text" id="palavra1" name="palavra1" required>
+
+    <label for="palavra2">Palavra 2:</label>
+    <input type="text" id="palavra2" name="palavra2" required>
+
+    <label for="saida">Palavras Intercaladas:</label>
+    <input type="text" id="saida" name="saida" disabled>
+
+    <button type="button" onclick="intercalarPalavras()">Intercalar</button>
+  </form>
+
+  <script>
+    function intercalarPalavras() {
+      var palavra1 = document.getElementById('palavra1').value;
+      var palavra2 = document.getElementById('palavra2').value;
+      var saida = document.getElementById('saida');
+
+      // Verifica se as palavras foram inseridas
+      if (!palavra1 || !palavra2) {
+        alert('Por favor, insira ambas as palavras.');
+        return;
+      }
+
+      // Intercala as palavras
+      var resultado = intercalar(palavra1, palavra2);
+      
+      // Define o resultado no campo desabilitado
+      saida.value = resultado;
+    }
+
+    function intercalar(palavra1, palavra2) {
+      var resultado = '';
+      var i, j;
+      for (i = 0, j = 0; i < palavra1.length || j < palavra2.length; i++, j++) {
+        if (i < palavra1.length) {
+          resultado += palavra1[i];
+        }
+        if (j < palavra2.length) {
+          resultado += palavra2[j];
+        }
+      }
+      return resultado;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      font-size: 14px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #mensagem {
+      font-size: 14px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="return validarFormulario()">
+    <label for="login">Login:</label>
+    <input type="text" id="login" name="login" required>
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" required>
+
+    <label for="confirmarSenha">Confirmar Senha:</label>
+    <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+
+    <button type="submit">Cadastrar</button>
+
+    <p id="mensagem"></p>
+  </form>
+
+  <script>
+    function validarFormulario() {
+      var login = document.getElementById('login').value;
+      var senha = document.getElementById('senha').value;
+      var confirmarSenha = document.getElementById('confirmarSenha').value;
+      var mensagem = document.getElementById('mensagem');
+
+      if (!login || !senha || !confirmarSenha) {
+        mensagem.textContent = 'Por favor, preencha todos os campos.';
+        return false;
+      }
+
+      if (senha.length < 6 || senha.length > 10) {
+        mensagem.textContent = 'A senha deve ter entre 6 e 10 caracteres.';
+        return false;
+      }
+
+      if (senha !== confirmarSenha) {
+        mensagem.textContent = 'As senhas não coincidem.';
+        return false;
+      }
+
+      
+      mensagem.textContent = "";
+      return true;
+
+    }
+    alert('Cadastro confirmado com sucesso')
+ 
+ </script>
+
+</body>
+</html>

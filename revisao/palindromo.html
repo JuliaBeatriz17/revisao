@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificar Palíndromo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      font-size: 14px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="palavra">Digite uma palavra:</label>
+  <input type="text" id="palavra" name="palavra">
+
+  <button onclick="verificarPalindromo()">Verificar Palíndromo</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function verificarPalindromo() {
+      var palavraInput = document.getElementById('palavra').value.toLowerCase();
+      var resultadoElement = document.getElementById('resultado');
+
+      // Remover espaços em branco da palavra
+      var palavraSemEspacos = palavraInput.replace(/\s/g, '');
+
+      // Inverter a palavra
+      var palavraInvertida = palavraSemEspacos.split('').reverse().join('');
+
+      // Verificar se a palavra é um palíndromo
+      if (palavraSemEspacos === palavraInvertida) {
+        resultadoElement.textContent = 'A palavra é um palíndromo!';
+      } else {
+        resultadoElement.textContent = 'A palavra não é um palíndromo.';
+      }
+    }
+  </script>
+
+</body>
+</html>

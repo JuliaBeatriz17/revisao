@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Imagens</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px;
+    }
+
+    .miniatura {
+      width: 50%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    #imagemAmpliada {
+      display: none;
+      position: fixed;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    #fechar {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    #fechar:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="galeria">
+    <img class="miniatura" src="/revisao/images.jpeg" alt="Imagem 1" onclick="ampliarImagem('images.jpeg')">
+    <img class="miniatura" src="/revisao/imagess.jpeg" alt="Imagem 2" onclick="ampliarImagem('imagess.jpeg')">
+    <img class="miniatura" src="/revisao/imagesss.jpeg" alt="Imagem 3" onclick="ampliarImagem('imagesss.jpeg')">
+  </div>
+
+  <div id="imagemAmpliada"></div>
+  <div id="fechar" onclick="fecharImagemAmpliada">&#10006;</div>
+
+  <script>
+    function ampliarImagem(src) {
+      var imagemAmpliada = document.getElementById('imagemAmpliada');
+      var fecharBotao = document.getElementById('fechar');
+
+      imagemAmpliada.innerHTML = `<img src="${src}" alt="Imagem Ampliada">`;
+      imagemAmpliada.style.display = 'block';
+      fecharBotao.style.display = 'block';
+    }
+
+    function fecharImagemAmpliada() {
+      var imagemAmpliada = document.getElementById('imagemAmpliada');
+      var fecharBotao = document.getElementById('fechar');
+
+      imagemAmpliada.style.display = 'none';
+      fecharBotao.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

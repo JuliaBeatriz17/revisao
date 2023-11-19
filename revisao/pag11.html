@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesquisa de Palavra</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .destacado {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <label for="palavra">Palavra:</label>
+    <input type="text" id="palavra" name="palavra" required>
+    <button type="button" onclick="pesquisar()">Pesquisar</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <div id="texto">
+    <p>
+        Sobre o trono de justiça
+        Eternamente haverá um Rei
+        Ele voltará para governar
+        As nações em amor
+        Que ruja o Leão
+        E que a terra estremeça
+        Diante da majestade de Jesus
+        O descendente de Davi
+        O homem mais notável
+        Ele ama a justiça
+        Odeia iniquidade
+        E ele virá
+        O Leão da Tribo de Judá
+    </p>
+  </div>
+
+  <script>
+    function pesquisar() {
+      var palavra = document.getElementById('palavra').value.toLowerCase();
+      var texto = document.getElementById('texto').innerHTML;
+      var resultadoElement = document.getElementById('resultado');
+
+      // Remover destaque anterior
+      texto = texto.replace(/<span class="destacado">|<\/span>/gi, '');
+
+      // Realizar a pesquisa e destacar as ocorrências
+      var regex = new RegExp("\\b" + palavra + "\\b", "gi");
+      texto = texto.replace(regex, '<span class="destacado">$&</span>');
+
+      // Atualizar o texto na página
+      document.getElementById('texto').innerHTML = texto;
+
+      // Contar o número de ocorrências
+      var ocorrencias = (texto.match(/<span class="destacado">/g) || []).length;
+
+      // Exibir o resultado
+      if (ocorrencias > 0) {
+        resultadoElement.innerHTML = `Encontradas ${ocorrencias} ocorrência(s) da palavra '${palavra}'.`;
+      } else {
+        resultadoElement.innerHTML = `Nenhuma ocorrência da palavra '${palavra}' encontrada.`;
+      }
+    }
+  </script>
+
+</body>
+</html>
